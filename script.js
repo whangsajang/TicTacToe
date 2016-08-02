@@ -1,6 +1,4 @@
-/**
- * Created by erikaoneal on 5/3/16.
- */
+
 var player1_array = [];
 var player2_array = [];
 var play_count = 1;
@@ -9,7 +7,6 @@ var cell_win_count = 3;
 var win = false;
 var player1_wins = 0;
 var player2_wins = 0;
-var reset_timer = null;
 
 function make_move() {
     //main function executed on click. add image to block, call check_win, call check_draw, increase play_count
@@ -17,13 +14,10 @@ function make_move() {
 
     if (self.find('.x').css('display') == 'none' && self.find('.o').css('display') == 'none') {
         if (play_count % 2 == 1) {
-            // var x = 'x';
             self.find('.x').show();
-            //  var x = $('<div>').addClass('img-responsive').html('<img src="images/x.png">');
-            //  $(x).appendTo('<div>');
 
             /////creating object of player's move
-            var column = null
+            var column = null;
             var row = null;
             for (i = 0; i < cell_count; i++) {
                 var current_column = "column_" + i;
@@ -40,7 +34,7 @@ function make_move() {
                 column: column,
                 row: row,
                 value: 'player1'
-            }
+            };
             player1_array.push(player_move);
             check_win(player_move);
             check_draw();
@@ -48,12 +42,8 @@ function make_move() {
         }
         else {
 
-            // var o = 'o';
             self.find('.o').show();
-            // var o = $('<div>').addClass('img-responsive').html('<img src="images/o.png">'); //addClass
-            //  $(o).appendTo('<div>');
-            /////creating object of player's move
-            var column = null
+            var column = null;
             var row = null;
             for (i = 0; i < cell_count; i++) {
                 var current_column = "column_" + i;
@@ -78,10 +68,6 @@ function make_move() {
         }
         $('.player').toggleClass('player-turn')
     }
-}
-
-function set_timer() {
-
 }
 
 function check_win(object) {
@@ -415,8 +401,6 @@ function game_board() {
             var column_class = "column_"+j;
             var row_class = "row_"+i;
             var gamebox_size = (100/cell_count) + '%';
-            //  var image_x = $('<img>').addClass('x').attr('src', 'images/x.png');
-            // var image_o = $('<img>').addClass('o').attr('src', 'images/o.png');
             var new_div = $('<div>', {
                 class : ("cells "+ column_class + " " + row_class),
                 width: gamebox_size,
@@ -426,7 +410,6 @@ function game_board() {
             var image_o = $('<img>').addClass('o').attr('src', 'images/o.png');
             new_div.append(image_x, image_o);
             $('.game-area').append(new_div);
-            // store(new_div, i);
         }
     }
     $('.x').hide();
